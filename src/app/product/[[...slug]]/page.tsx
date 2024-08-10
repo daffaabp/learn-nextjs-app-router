@@ -3,7 +3,6 @@ type DetailProductPageProps = { params: { slug: string[] } };
 export default function DetailProductPage(props: DetailProductPageProps) {
   // untuk menangkap slug params yang lebih dari satu, dalam bentuk string array
   const { params } = props;
-  console.log(params);
   
   return (
     <div>
