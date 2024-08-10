@@ -5,6 +5,10 @@ async function getData() {
   // const res = await fetch("https://fakestoreapi.com/products");
   const res = await fetch("http://localhost:3000/api/product", {
     cache: "no-store",
+    next: {
+      tags: ["product"], 
+      revalidate: 30 
+    },
   });
 
   if (!res.ok) {
