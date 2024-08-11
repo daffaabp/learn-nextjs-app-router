@@ -2,12 +2,18 @@ type ProductPageProps = { params: { slug: string[] } };
 
 // mendefinisikan fetch api get all product
 async function getData() {
+  // ini api dari luar
+  // const res = await fetch("https://fakestoreapi.com/products", {
+  //   cache: "no-store",
+  // })
+
+  // ini api lokal
   // const res = await fetch("https://fakestoreapi.com/products");
-  const res = await fetch("http://localhost:3000/api/product", {
+  const res = await fetch("http://localhost:3000/api/productss", {
     cache: "no-store",
     next: {
-      tags: ["product"], 
-      revalidate: 30 
+      tags: ["product"],
+      revalidate: 30
     },
   });
 
@@ -37,16 +43,13 @@ export default async function DetailProductPage(props: ProductPageProps) {
               <a href="#">
                 <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white truncate">{product.title}</h5>
               </a>
-      
               <div className="flex items-center justify-between mt-3">
                 <span className="text-3xl font-bold text-gray-900 dark:text-white">$ {product.price}</span>
                 <a href="#" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
               </div>
             </div>
           </div>
-
         ))}
-
 
       {params.slug &&
         <>
