@@ -2,34 +2,28 @@ import { NextRequest, NextResponse } from "next/server";
 const data = [
   {
     id: 1,
-    name: "Nike InfinityRN 4 Electric",
+    name: "Nike Free Metcon 6",
     price: 1000000,
-    image: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/86991b52-33a2-4e41-aace-c05510832f84/air-jordan-1-low-shoes-6Q1tFM.png",
+    image: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/e167d5cd-9b20-4935-a0fa-2a93c4b136f4/metcon-9-workout-shoes-ldMsxB.png",
   },
   {
     id: 2,
-    name: "Nike Air VaporMax 2023 Flyknit Electric",
+    name: "Nike Legend Essential 3 Next Nature",
     price: 1900000,
-    image: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/8c73dd3a-cfa4-49ca-b66c-065c233802dc/air-jordan-1-low-se-shoes-FTrFvs.png",
+    image: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/fba4b0f7-3fbf-4361-8281-e4dcd98e850c/legend-essential-3-next-nature-workout-shoes-6JkQMw.png",
   },
   {
     id: 3,
-    name: "Nike InfinityRN 4 Electric",
+    name: "Nike Metcon 1 OG",
     price: 1500000,
-    image: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/66b1a0a7-2277-4ab5-8f94-03e52d4fcd45/AIR+JORDAN+1+LOW.png",
+    image: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/de62b6c2-a453-454b-8934-4ffd2f8eb34d/metcon-1-og-workout-shoes-tz6pbf.png",
   },
   {
     id: 4,
     name: "Nike InfinityRN 4 Electric",
     price: 1500000,
-    image: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/66b1a0a7-2277-4ab5-8f94-03e52d4fcd45/AIR+JORDAN+1+LOW.png",
+    image: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/2690f275-f811-4967-8da4-872e6b6d6229/mc-trainer-2-workout-shoes-WFVXbk.png",
   },
-  {
-    id: 5,
-    name: "Nike InfinityRN 5 Electric",
-    price: 1500000,
-    image: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/66b1a0a7-2277-4ab5-8f94-03e52d4fcd45/AIR+JORDAN+1+LOW.png",
-  }
 ];
 
 export async function GET(request: NextRequest) {
