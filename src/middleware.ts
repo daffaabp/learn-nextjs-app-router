@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
 
-  const isLogin = false;
+  const isLogin = true;
   // setiap kita mengakses sebuah URL, maka yang diakses adalah middleware nya terlebih dahulu 
 
   if (!isLogin) {
