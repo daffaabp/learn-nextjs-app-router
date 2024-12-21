@@ -3,7 +3,7 @@ import Link from "next/link";
 
 type ProductPageProps = { params: { slug: string[] } };
 
-export default async function DetailProductPage(props: ProductPageProps) {
+export default async function ProductPage(props: ProductPageProps) {
   // untuk menangkap slug params yang lebih dari satu, dalam bentuk string array
   const { params } = props;
   const products = await getData("http://localhost:3000/api/product");
