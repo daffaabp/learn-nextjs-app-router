@@ -18,7 +18,7 @@ async function getData() {
   return res.json();
 }
 
-export default async function DetailProductPage(props: ProductPageProps) {
+export default async function ProductPage(props: ProductPageProps) {
   // untuk menangkap slug params yang lebih dari satu, dalam bentuk string array
   const { params } = props;
   const products = await getData();
