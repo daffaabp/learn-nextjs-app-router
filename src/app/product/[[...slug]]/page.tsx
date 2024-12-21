@@ -24,7 +24,7 @@ async function getData() {
   return res.json();
 }
 
-export default async function DetailProductPage(props: ProductPageProps) {
+export default async function ProductPage(props: ProductPageProps) {
   // untuk menangkap slug params yang lebih dari satu, dalam bentuk string array
   const { params } = props;
   const products = await getData();
@@ -35,7 +35,7 @@ export default async function DetailProductPage(props: ProductPageProps) {
       {/* <h1>{params.slug ? "Detail Product Page" : "Product Page"}</h1> */}
       {products.data.length > 0 &&
         products.data.map((product: any) => (
-          <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 my-5">
+          <div key={product.id} className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 my-5">
             <a href="#">
               <img className="p-8 rounded-t-lg object-cover h-96 w-full" src={product.image} alt="product image" />
             </a>
