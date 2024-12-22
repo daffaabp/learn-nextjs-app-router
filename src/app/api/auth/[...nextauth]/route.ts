@@ -1,5 +1,3 @@
-import { login } from "@/lib/firebase/service";
-import { compare } from "bcrypt";
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -7,7 +5,7 @@ const authOptions: NextAuthOptions = {
     session: {
         strategy: "jwt",
     },
-    secret: "daffa12345",
+    secret: process.env.NEXTAUTH_SECRET,
     providers: [
         CredentialsProvider({
             type: 'credentials',
@@ -17,33 +15,35 @@ const authOptions: NextAuthOptions = {
                 password: {label: 'password', type: 'password', placeholder: 'password'},
             },
             async authorize(credentials) {
-                const { email, password } = credentials as {
+                const {email, password} = credentials as {
                     email: string;
                     password: string;
                 };
-                const user: any = await login({ email, password }); // Memperbaiki argumen yang dikirim ke fungsi login
-
-                if (user) {
-                    const passwordConfirm = await compare(password, user.password);
-                    if (passwordConfirm) {
-                        return user;
-                    }
+                const user: any = {
+                    id: "1",
+                    name: "daffa budi",
+                    email: "daffa.budi2003@gmail.com",
+                    role: "admin",
                 }
-                return null; // Mengembalikan null jika tidak ada pengguna atau password tidak cocok
+                if (email === "daffa.budi2003@gmail.com" && password === "12345") {
+                    return user
+                } else {
+                    return null
+                }
             }
         })
     ],
     callbacks: {
-        async jwt({ token, account, profile, user }: any) {
+        async jwt({token, account, profile, user}: any) {
             if (account?.provider === "credentials") {
                 token.email = user.email;
                 token.fullname = user.fullname;
                 token.role = user.role;
             }
-            return token; 
+           return token; 
         },
 
-        async session({ session, token }: any) {
+        async session({session, token}: any) {
             if ("email" in token) {
                 session.user.email = token.email;
             }
