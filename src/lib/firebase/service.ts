@@ -20,6 +20,25 @@ export async function retrieveDataById(collectionName: string, id: string) {
   return data;
 };
 
+export async function login(data: {email: string, password: string}) {
+  const q = query(
+    collection(firestore, "users"), 
+    where("email", "==", data.email)
+  );
+
+  const snapshot = await getDocs(q);
+  const user = snapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+
+  if (user) {
+    return user[0]
+  } else {
+    return null
+  }
+}
+
 
 export async function register(data: {
   fullName: string,
@@ -43,7 +62,7 @@ export async function register(data: {
   if (users.length > 0) {
     return {status: false, statusCode: 400, message: "Email already exists"};
   } else {
-    data.role = "admin";
+    data.role = "member";
     data.password = await bcrypt.hash(data.password, 10);
 
     try {
@@ -52,25 +71,5 @@ export async function register(data: {
     } catch (error) {
       return {status: false, statusCode: 400, message: "Register Failed"};
     }
-  }
-}
-
-
-export async function login(data: {email: string, password: string}) {
-  const q = query(
-    collection(firestore, "users"), 
-    where("email", "==", data.email)
-  );
-
-  const snapshot = await getDocs(q);
-  const user = snapshot.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
-
-  if (user) {
-    return user[0]
-  } else {
-    return null
   }
 }

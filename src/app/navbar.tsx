@@ -1,13 +1,12 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   // penggunaan hooks usePathname
   const pathname = usePathname();
-  const route = useRouter();
-  const { data: session, status }: { data: any, status: any } = useSession();
-
+  const { data: session, status }: {data: any, status: string} = useSession();
+  
   return (
     <nav className="flex bg-gray-800 py-2 px-5 justify-between">
       <div className="flex">
@@ -30,20 +29,17 @@ export default function Navbar() {
 
       <div>
         {status === "authenticated" ? (
-          <div className="flex">
-          <h4 className="text-white mr-3">{session?.user?.fullname}</h4>
-            <button
-              onClick={() => signOut()}
-              className="bg-white rounded-md px-3 text-sm h-7 cursor-pointer">
-              Logout
-            </button>
-          </div>
+          <button
+          onClick={() => signOut()}
+          className="bg-white rounded-md px-3 text-sm h-7 cursor-pointer">
+          Logout
+        </button>
         ) : (
           <button
-            onClick={() => signIn()}
-            className="bg-white rounded-md px-3 text-sm h-7 cursor-pointer">
-            Login
-          </button>
+          onClick={() => signIn()}
+          className="bg-white rounded-md px-3 text-sm h-7 cursor-pointer">
+          Login
+        </button>
         )}
       </div>
     </nav>
